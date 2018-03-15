@@ -22,10 +22,32 @@ public class AppUser extends Base {
 	private String password;
 	private String salt;
 	private String phoneNumber; //TODO : Later consider for Contact collection
-	private String marketingPreferences;
+	private Boolean marketingPreferences;
 	private String address; //TODO can be moved to separate ADDRESS collection and get linked with addresslookupID
 
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
 
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public Boolean getMarketingPreferences() {
+		return marketingPreferences;
+	}
+
+	public void setMarketingPreferences(Boolean marketingPreferences) {
+		this.marketingPreferences = marketingPreferences;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
 	private transient String fullName;
 

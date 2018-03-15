@@ -36,30 +36,11 @@ public class AppUserHandler extends BaseHandler {
 		super(vertx);
 	}
 
-	@Override
-	@Protected
-	@RequestMapping(method = HttpMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public void handle(RoutingContext ctx) {
-		try {
-			Date date = new Date();
-			ObjectId userId = ((SessionUser) ctx.getDelegate().user()).getCurrentSession().getAppUserId();
-			AppUser appUserRequest = decode(ctx.getBodyAsString(), AppUser.class);
-			appUserHelper.doValidate(appUserRequest, false).flatMap(user -> {
-				user.setCreatedBy(userId);
-				user.setUpdatedBy(userId);
-				return appUserHelper.doCreate(user.toJson());
-			}).doOnSuccess(jsonObject -> {
-				ResponseUtil.toResponse(MapperUtil.map(new AppUser(jsonObject), UserSessionDTO.class), ctx, date);
-			}).doOnError(cause -> {
-				ctx.fail(cause);
-			}).subscribe();
-		} catch (DecodeException dx) {
-			ctx.fail(new RestException("Bad Request", HttpResponseStatus.BAD_REQUEST.code()));
-		} catch (Exception ex) {
-			ctx.fail(ex);
-		}
-	}
-
+	/**
+	 * Method to add a User
+	 * @param
+	 * ctx object
+	 */
 	@RequestMapping(method = HttpMethod.POST, path = "/signup", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public void signUp(RoutingContext ctx) {
 		try {
@@ -87,4 +68,53 @@ public class AppUserHandler extends BaseHandler {
 			ctx.fail(ex);
 		}
 	}
+
+
+	@Override
+	@Protected
+	@RequestMapping(method = HttpMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public void handle(RoutingContext ctx) {
+		try {
+			Date date = new Date();
+			ObjectId userId = ((SessionUser) ctx.getDelegate().user()).getCurrentSession().getAppUserId();
+			final String emailId = ctx.request().getParam("emailId");
+			JsonObject query = new JsonObject().put("email", emailId);
+			JsonObject fields = new JsonObject();
+			appUserHelper.getAppUser(query, fields).doOnSuccess(jsonObject -> {
+				ResponseUtil.toResponse(MapperUtil.map(new AppUser(jsonObject), UserSessionDTO.class), ctx, date);
+			}).doOnError(cause -> {
+				ctx.fail(cause);
+			}).subscribe();
+		} catch (DecodeException dx) {
+			ctx.fail(new RestException("Bad Request", HttpResponseStatus.BAD_REQUEST.code()));
+		} catch (Exception ex) {
+			ctx.fail(ex);
+		}
+	}
+
+	@Protected
+	@RequestMapping(method = HttpMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public void update(RoutingContext ctx) {
+		try {
+			Date date = new Date();
+			ObjectId userId = ((SessionUser) ctx.getDelegate().user()).getCurrentSession().getAppUserId();
+
+			//TODO
+			JsonObject body = ctx.getBodyAsJson();
+
+			final String emailId = body.getString("emailId");
+			JsonObject query = new JsonObject().put("email", emailId);
+			JsonObject fields = new JsonObject().put("$set", body.getString("updateData"));
+			appUserHelper.updateAppUser(query, fields).doOnSuccess(jsonObject -> {
+				ResponseUtil.toResponse(MapperUtil.map(new AppUser(jsonObject), UserSessionDTO.class), ctx, date);
+			}).doOnError(cause -> {
+				ctx.fail(cause);
+			}).subscribe();
+		} catch (DecodeException dx) {
+			ctx.fail(new RestException("Bad Request", HttpResponseStatus.BAD_REQUEST.code()));
+		} catch (Exception ex) {
+			ctx.fail(ex);
+		}
+	}
+
 }

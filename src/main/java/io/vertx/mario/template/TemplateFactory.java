@@ -12,7 +12,7 @@ import io.vertx.mario.annotation.EmailTemplate;
 public class TemplateFactory {
 	private static Map<String, Class<AbstractEmailTemplate>> emailTemplateMapping = new HashMap<>();
 	static {
-		final Reflections reflections = new Reflections("io.vertx.realworld.template");
+		final Reflections reflections = new Reflections("io.vertx.mario.template");
 		final Set<Class<?>> clazzes = reflections.getTypesAnnotatedWith(EmailTemplate.class);
 		if (null != clazzes && !clazzes.isEmpty()) {
 			clazzes.forEach(x -> {

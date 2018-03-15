@@ -50,6 +50,15 @@ public class AppUserConverter {
     if (json.getValue("updatedDate") instanceof String) {
       obj.setUpdatedDate((String)json.getValue("updatedDate"));
     }
+    if (json.getValue("phoneNumber") instanceof String) {
+      obj.setPhoneNumber((String)json.getValue("phoneNumber"));
+    }
+    if (json.getValue("marketingPreferences") instanceof Boolean) {
+      obj.setMarketingPreferences((Boolean) json.getBoolean("marketingPreferences"));
+    }
+    if (json.getValue("address") instanceof String) {
+      obj.setAddress((String)json.getValue("address"));
+    }
   }
 
   public static void toJson(AppUser obj, JsonObject json) {
@@ -76,6 +85,15 @@ public class AppUserConverter {
     }
     if (obj.getUpdatedDate() != null) {
       json.put("updatedDate", obj.getUpdatedDate());
+    }
+    if (obj.getPhoneNumber() != null) {
+      json.put("phoneNumber", obj.getPhoneNumber());
+    }
+    if (obj.getAddress() != null) {
+      json.put("address", obj.getAddress());
+    }
+    if (obj.getMarketingPreferences() != null) {
+      json.put("marketingPreferences", obj.getMarketingPreferences());
     }
   }
 }

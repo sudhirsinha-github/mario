@@ -135,3 +135,47 @@ db.temporary_links.createIndex( { "link": 1 }, { expireAfterSeconds: 86400 } )<b
 
 * [Vertx](http://vertx.io/) - The web framework used
 * [Gradle](https://gradle.org/) - Dependency Management
+
+
+Sample API's
+
+```
+POST /runner/api/user/signup HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+Authorization: BEARER 7338510cd7b44718ada4411725031414
+Cache-Control: no-cache
+Postman-Token: b4f2959e-1bf6-4229-f867-b47a41950fee
+{
+	"firstName":"Test",
+	"lastName":"Sec",
+	"email":"sectest5@mailinator.com",
+	"password":"password",
+	"phoneNumber":"901231231313",
+	"marketingPreferences":false,
+	"address":"Bangalore"
+}
+```
+
+```
+POST /runner/api/session/authenticate HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+Cache-Control: no-cache
+Postman-Token: 1c2d1919-9caa-86bf-c914-1b15b7b44f7b
+
+{
+	"email":"sectest5@mailinator.com",
+	"password":"password"
+}
+```
+
+```
+GET /runner/api/user?emailId=sudmaili@mailinator.com HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+Authorization: BEARER 7338510cd7b44718ada4411725031414
+Cache-Control: no-cache
+Postman-Token: 59b86d55-3d85-0130-8dc0-cbbac08b0f28
+
+```

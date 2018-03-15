@@ -53,6 +53,14 @@ public enum AppUserHelper {
 		});
 	}
 
+	public Single<JsonObject> getAppUser(final JsonObject query, final JsonObject fields) {
+		return dbService.rxFindOne(AppUser.DB_TABLE, query, fields).map(result -> {
+			if (null == result)
+				throw new UserNotFoundException();
+			return result;
+		});
+	}
+
 	public Single<JsonObject> updateAppUser(final JsonObject query, final JsonObject toUpdate) {
 		return dbService.rxFindOneAndUpdate(AppUser.DB_TABLE, query, toUpdate).map(result -> {
 			if (null == result)

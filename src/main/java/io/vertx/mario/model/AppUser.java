@@ -21,6 +21,11 @@ public class AppUser extends Base {
 	private String email;
 	private String password;
 	private String salt;
+	private String phoneNumber; //TODO : Later consider for Contact collection
+	private String marketingPreferences;
+	private String address; //TODO can be moved to separate ADDRESS collection and get linked with addresslookupID
+
+
 
 	private transient String fullName;
 

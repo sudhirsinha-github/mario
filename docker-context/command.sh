@@ -1,0 +1,1 @@
+java -javaagent:/home/ubuntu/mario/AppD/AppDJavaAgent/AppServerAgent-2/javaagent.jar -jar  -Dvertx.logger-delegate-factory-class-name=io.vertx.core.logging.SLF4JLogDelegateFactory -Dlogback.configurationFile=file:./logback.xml ./mario-fat.jar ./conf.json

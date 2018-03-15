@@ -1,5 +1,6 @@
 
-# introduction  :: Vertx Mario APP supporting -
+## Vertx Mario APP
+
     authentication
     session management
     public and protected Secured APIs
@@ -41,9 +42,9 @@ For running the app, (IDE used here is Eclipse)
 **Data to send:** *json data below -> I have used mailinator here to receive the welcome email*
 ```
 {
-  "firstName": "Grey",
-  "lastName": "Seal",
-  "email": "mail.greyseal@mailinator.com",
+  "firstName": "Sudhir",
+  "lastName": "Kumar",
+  "email": "test@mailinator.com",
   "password": "password"
 }
 ```
@@ -78,7 +79,7 @@ Successful Response would be: <br />
 **Data to send:** *json data below ->*
 ```
 {
-  "email": "mail.greyseal@mailinator.com",
+  "email": "test@mailinator.com",
   "password": "password"
 }
 ```
@@ -89,9 +90,9 @@ Successful Response would be: <br />
   "message": "success",
   "hasError": false,
   "data": {
-    "email": "mail.greyseal@mailinator.com",
-    "firstName": "Grey",
-    "lastName": "Seal"
+    "email": "test@mailinator.com",
+    "firstName": "test",
+    "lastName": "user"
   }
 }
 ```
@@ -118,9 +119,9 @@ Successful Response would be: <br />
   "message": "success",
   "hasError": false,
   "data": {
-    "email": "smanuael@gmail.com",
+    "email": "ytttsesy@gmail.com",
     "firstName": "Sam",
-    "lastName": "Manuael"
+    "lastName": "test"
   }
 }
 ```

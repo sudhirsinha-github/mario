@@ -33,8 +33,10 @@ For running the app, (IDE used here is Eclipse)
 - Open **appConfig.json** file and set the "http_server_port" as per your choice. Also, update the "mailConfig" settings as per your mail provider.
 
 ## From Terminal
-   : ./gradlew clean build shadowJar
-   : java -jar build/libs/mario-0.0.1-fat.jar -conf src/main/resources/appConfig.json
+
+   ./gradlew clean build shadowJar
+
+    java -jar build/libs/mario-0.0.1-fat.jar -conf src/main/resources/appConfig.json
 
  Start mongod, create db -> vert-ex (as mentioned in config)
 

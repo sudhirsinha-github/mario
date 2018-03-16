@@ -68,4 +68,14 @@ public enum AppUserHelper {
 			return result;
 		});
 	}
+
+	public Single<JsonObject> updateMultipleAppUser(final JsonObject query, final JsonObject toUpdate) {
+
+		//??? bulk upload api
+		return dbService. rxFindOneAndUpdate(AppUser.DB_TABLE, query, toUpdate).map(result -> {
+			if (null == result)
+				throw new UserNotFoundException();
+			return result;
+		});
+	}
 }

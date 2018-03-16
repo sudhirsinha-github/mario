@@ -24,14 +24,15 @@ repositories {
 	maven { url "https://plugins.gradle.org/m2/" }
 }
 
-mainClassName = 'io.vertx.realworld.AppLauncher'
+mainClassName = 'io.vertx.mario.AppLauncher'
 
 shadowJar {
-	baseName = 'thor'
+	baseName = 'mario'
 	version = '0.0.1'
 	classifier = 'fat'
+	mainClassName = mainClassName
 	manifest {
-		attributes 'Main-Verticle': 'io.vertx.realworld.verticle'
+		attributes 'Main-Verticle': 'io.vertx.mario.verticle.MainVerticle'
 	}
 	mergeServiceFiles {
 		include 'META-INF/services/io.vertx.core.spi.VerticleFactory'
@@ -57,6 +58,16 @@ dependencies {
 	    	    "org.reflections:reflections:${reflectionVersion}",
 			"io.vertx:vertx-service-proxy:${vertxVersion}:processor",
 			"org.modelmapper:modelmapper:${modelMapperVersion}"
+
+	compile group: 'io.vertx', name: 'vertx-rx-java', version: '3.5.0'
+	compile group: 'com.englishtown.vertx', name: 'vertx-guice', version: '2.3.1'
+	compile group: 'info.cukes', name: 'cucumber-junit', version: '1.2.4'
+	compile group: 'info.cukes', name: 'cucumber-java', version: '1.2.4'
+	testCompile "com.github.tomakehurst:wiremock-standalone:2.12.0"
+	testCompile group: 'com.jayway.awaitility', name: 'awaitility', version: '1.7.0'
+	testCompile group: 'info.cukes', name: 'cucumber-guice', version: '1.2.5'
+	testCompile 'org.mockito:mockito-core:2.12.0'
+
 
 	compileOnly "io.vertx:vertx-codegen:${vertxVersion}"
 	testCompile "io.vertx:vertx-unit:${vertxVersion}"		
@@ -92,5 +103,5 @@ task wrapper(type: Wrapper) {
 }
 
 run {
-	args = ['run', "io.vertx.realworld.verticle", "--launcher-class=io.vertx.realworld.AppLauncher"]
+	args = ['run', "io.vertx.mario.verticle", "--launcher-class=io.vertx.mario.AppLauncher"]
 }

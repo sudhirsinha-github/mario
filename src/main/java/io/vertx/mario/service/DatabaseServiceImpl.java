@@ -1,5 +1,7 @@
 package io.vertx.mario.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import com.mongodb.MongoWriteException;
@@ -9,6 +11,7 @@ import io.vertx.core.AsyncResult;
 import io.vertx.core.Future;
 import io.vertx.core.Handler;
 import io.vertx.core.json.JsonObject;
+import io.vertx.ext.mongo.BulkOperation;
 import io.vertx.reactivex.ext.mongo.MongoClient;
 import io.vertx.mario.exception.DuplicateEntryException;
 import io.vertx.mario.exception.RestException;
@@ -82,6 +85,12 @@ public class DatabaseServiceImpl implements DatabaseService {
 		} catch (Exception ex) {
 			resultHandler.handle(Future.failedFuture(ex));
 		}
+		return this;
+	}
+
+
+	public DatabaseService bulkWrite(String collection, JsonObject query,
+											Handler<AsyncResult<JsonObject>> resultHandler) {
 		return this;
 	}
 

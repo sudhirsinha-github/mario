@@ -8,12 +8,16 @@
 [frame="topbot"]
 |===
 ^|Name | Type ^| Description
+|[[address]]`address`|`String`|-
 |[[createdDate]]`createdDate`|`String`|-
 |[[email]]`email`|`String`|-
 |[[firstName]]`firstName`|`String`|-
+|[[fullName]]`fullName`|`String`|-
 |[[isActive]]`isActive`|`Boolean`|-
 |[[lastName]]`lastName`|`String`|-
+|[[marketingPreferences]]`marketingPreferences`|`Boolean`|-
 |[[password]]`password`|`String`|-
+|[[phoneNumber]]`phoneNumber`|`String`|-
 |[[salt]]`salt`|`String`|-
 |[[updatedDate]]`updatedDate`|`String`|-
 |===

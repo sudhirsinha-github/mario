@@ -31,6 +31,13 @@ This application allows user to Register a user, send welcome email with activat
 
 For running the app, (IDE used here is Eclipse)
 - Open **appConfig.json** file and set the "http_server_port" as per your choice. Also, update the "mailConfig" settings as per your mail provider.
+
+##From Terminal
+   : ./gradlew clean build shadowJar
+   : java -jar build/libs/mario-0.0.1-fat.jar -conf src/main/resources/appConfig.json
+
+ Start mongod, create db -> vert-ex (as mentioned in config)
+
 - Once, changes are done in **appConfig.json**, right click on the project("mario"), <br />select "Run As" -> "Run Configurations". Set:
   * **Main**: io.vertx.mario.AppLauncher
   * **Program arguments**: <br />run io.vertx.mario.verticle.MainVerticle -conf ../mario/src/main/resources/appConfig.json

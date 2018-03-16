@@ -101,6 +101,19 @@ public class DatabaseService {
 		});
 	}
 
+
+	public void bulkWrite(String collection, JsonObject query,
+								 Handler<AsyncResult<JsonObject>> resultHandler) {
+
+	}
+
+
+	public Single<JsonObject> rxBulkWrite(String collection, JsonObject document) {
+		return new io.vertx.reactivex.core.impl.AsyncResultSingle<JsonObject>(handler -> {
+			bulkWrite(collection, document, handler);
+		});
+	}
+
 	public static DatabaseService newInstance(io.vertx.mario.service.DatabaseService arg) {
 		return arg != null ? new DatabaseService(arg) : null;
 	}

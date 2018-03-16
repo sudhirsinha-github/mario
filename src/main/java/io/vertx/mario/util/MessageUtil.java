@@ -31,7 +31,7 @@ public class MessageUtil {
 
 		EmailMessage emailMsg = new EmailMessage.Builder().setTo(ResponseUtil.toList(user.getEmail()))
 				.setContent(content).setFrom(ConfigHelper.getFromAddress()).setIsContentHTML(true)
-				.setSubject("Welcome to the family of Greyseals").build();
+				.setSubject("Congratulations, Activate your account!!").build();
 		doSendMail(EmailMessageConverter.toMailMessage(emailMsg, vertx));
 
 	}

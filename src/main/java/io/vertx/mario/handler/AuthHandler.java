@@ -23,7 +23,7 @@ public class AuthHandler extends BaseHandler {
 	public void handle(RoutingContext event) {
 		try {
 			logger.info("Started executing method AuthHandler.handle");
-			ResponseUtil.setCookiesForLogging(event, "class io.vertx.realworld.handler.AuthHandler.handle",
+			ResponseUtil.setCookiesForLogging(event, "class io.vertx.mario.handler.AuthHandler.handle",
 					DateUtil.getTimeInMS());
 			String authHeader = event.request().headers().get(HttpHeaders.AUTHORIZATION.toString());
 			if (null == authHeader)

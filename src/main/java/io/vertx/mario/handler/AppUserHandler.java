@@ -104,7 +104,7 @@ public class AppUserHandler extends BaseHandler {
 
 			final String emailId = body.getString("emailId");
 			JsonObject query = new JsonObject().put("email", emailId);
-			JsonObject fields = new JsonObject().put("$set", body.getString("updateData"));
+			JsonObject fields = new JsonObject().put("$set", body.getJsonObject("updateData"));
 			appUserHelper.updateAppUser(query, fields).doOnSuccess(jsonObject -> {
 				ResponseUtil.toResponse(MapperUtil.map(new AppUser(jsonObject), UserSessionDTO.class), ctx, date);
 			}).doOnError(cause -> {
@@ -117,4 +117,28 @@ public class AppUserHandler extends BaseHandler {
 		}
 	}
 
+	@Protected
+	@RequestMapping(method = HttpMethod.POST, path = "/bulkupload", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public void bulkUpload(RoutingContext ctx) {
+		try {
+			Date date = new Date();
+			ObjectId userId = ((SessionUser) ctx.getDelegate().user()).getCurrentSession().getAppUserId();
+
+			//TODO
+			JsonObject body = ctx.getBodyAsJson();
+
+			final String emailId = body.getString("emailId");
+			JsonObject query = new JsonObject().put("email", emailId);
+			JsonObject fields = new JsonObject().put("$set", body.getString("updateData"));
+			appUserHelper.updateMultipleAppUser(query, fields).doOnSuccess(jsonObject -> {
+				ResponseUtil.toResponse(MapperUtil.map(new AppUser(jsonObject), UserSessionDTO.class), ctx, date);
+			}).doOnError(cause -> {
+				ctx.fail(cause);
+			}).subscribe();
+		} catch (DecodeException dx) {
+			ctx.fail(new RestException("Bad Request", HttpResponseStatus.BAD_REQUEST.code()));
+		} catch (Exception ex) {
+			ctx.fail(ex);
+		}
+	}
 }

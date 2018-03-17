@@ -20,7 +20,7 @@ public class PingHandler extends BaseHandler {
 	}
 
 	@Override
-	@RequestMapping(method = HttpMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(method = HttpMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public void handle(RoutingContext ctx) {
 		ApiResponse<JsonObject> response;
 		JsonObject result;

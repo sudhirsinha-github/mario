@@ -190,3 +190,25 @@ Cache-Control: no-cache
 Postman-Token: 59b86d55-3d85-0130-8dc0-cbbac08b0f28
 
 ```
+
+
+```
+curl -X PUT \
+  http://localhost:8080/runner/api/user \
+  -H 'authorization: BEARER 7338510cd7b44718ada4411725031414' \
+  -H 'cache-control: no-cache' \
+  -H 'content-type: application/json' \
+  -H 'postman-token: 918cdcbd-47a3-07d7-9d38-0b3b77166c94' \
+  -d '{
+	"emailId":"sectest5@mailinator.com",
+	"updateData":{
+		"firstName": "SAM",
+        "lastName": "Sooo",
+		"address" : "Ranchi",
+		"marketingPreferences" : true
+	}
+}'
+```
+
+
+

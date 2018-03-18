@@ -1,0 +1,31 @@
+{
+  "verticle": "java-guice:com.tesco.verticle.RestServiceVerticle",
+  "instance": 1,
+  "setting": {
+    "service_port": 9090,
+    "guice_binder": "com.tesco.di.RestServiceVerticleBinder",
+    "httpclientconfiguration":{
+      "connectionTimeOut":5000,
+      "idleTimeOut":5,
+      "isAlive":true,
+      "isCompressed":true,
+      "isSSL":true,
+      "isTrusted":true,
+      "isHostVerified":false
+    },
+    "LOCAL":{
+      "IdentityAPI":"https://localhost:8082/",
+      "SVSService": "https://localhost:8082/storedvalue",
+      "ProfileAPI":"https://localhost:8082/v3/pii/",
+      "ContactService":"https://localhost:8082/",
+      "cecIdentityUrl":"http://localhost:8081/gatekeeper",
+      "AddressAPI":"https://localhost:8082/address/",
+      "CerberusAPI":"http://localhost:8081/cerberus/api",
+      "attempt":1,
+      "Identity_Recard": "http://localhost:8081/v3/api",
+      "Profile_Recard": "http://localhost:8081/v1/pii/",
+      "RewardsAPI":"https://localhost:8082",
+      "DataPortabilityAPI":"https://localhost:8082/"
+    }
+  }
+}

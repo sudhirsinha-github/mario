@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "src/test/resources/features/",
-        glue = "com.tesco.bdd",
+        glue = "io.vertx.mario.bdd",
         plugin = {
                 "pretty",
                 "html:build/test/cucumber",

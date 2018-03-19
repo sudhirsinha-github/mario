@@ -27,11 +27,4 @@ public class PasswordStorageUtil {
 		secRan.nextBytes(ranBytes);
 		return ranBytes;
 	}
-
-	public static void main(String[] args) {
-		String[] array = encrypt("saurabh");
-		for (String string : array) {
-			System.out.println(string);
-		}
-	}
 }

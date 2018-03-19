@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 /**
- * @author saurabh Generic error object to be thrown for any occurence of error
+ * @author sudhir Generic error object to be thrown for any occurence of error
  *         while accessing the APIs.
  */
 

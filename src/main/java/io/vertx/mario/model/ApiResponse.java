@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 /**
- * @author saurabh Class to create the generic API responses to be send back to
+ * @author Sudhir Class to create the generic API responses to be send back to
  *         the consumers. All the rest API responses will be build using this.
  */
 @JsonDeserialize(builder = ApiResponse.Builder.class)
